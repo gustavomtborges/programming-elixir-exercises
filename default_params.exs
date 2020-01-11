@@ -1,17 +1,17 @@
 defmodule Chop do
-  def guess(actual, range) do
-    _..high = range
-    tryToGuess(actual, high, div(high, 2)..high)
+  def guess(actualNumber, rangeMin..rangeMax) when div(rangeMin + rangeMax, 2) > actualNumber do
+    IO.puts("It is #{middle(rangeMin, rangeMax)}")
+    guess(actualNumber, rangeMin..middle(rangeMin, rangeMax))
   end
 
-  def tryToGuess(actual, guessNumber, range) when actual == guessNumber, do: actual
-
-  def tryToGuess(actual, guessNumber, range) when actual < guessNumber do
-    low..high = range
-    IO.puts("#{low}..#{high}")
-    IO.puts("Is it #{low}")
+  def guess(actualNumber, rangeMin..rangeMax) when div(rangeMin + rangeMax, 2) < actualNumber do
+    IO.puts("It is #{middle(rangeMin, rangeMax)}")
+    guess(actualNumber, middle(rangeMin, rangeMax)..rangeMax)
   end
 
-  def tryToGuess(actual, guessNumber, range) when actual > guessNumber do
-  end
+  def guess(_actualNumber, rangeMin..rangeMax), do: IO.puts(middle(rangeMin, rangeMax))
+  def middle(min, max), do: div(min + max, 2)
 end
+
+# 273
+IO.puts(Chop.guess(273, 1..1000))
