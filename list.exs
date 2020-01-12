@@ -20,4 +20,12 @@ defmodule MyList do
   end
 
   defp _max([_head | tail], maximum), do: _max(tail, maximum)
+
+  def spam(from, to) when from > to do
+    []
+  end
+
+  def spam(from, to) do
+    [from | spam(from + 1, to)]
+  end
 end
