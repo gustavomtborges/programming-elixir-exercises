@@ -1,6 +1,6 @@
-defmodule Genserver do
+defmodule StackSupervisor do
   @moduledoc """
-  Documentation for `Genserver`.
+  Documentation for `StackSupervisor`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Genserver do
 
   ## Examples
 
-      iex> Genserver.hello()
+      iex> StackSupervisor.hello()
       :world
 
   """
